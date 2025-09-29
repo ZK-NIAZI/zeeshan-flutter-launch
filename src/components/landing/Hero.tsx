@@ -33,15 +33,37 @@ export const Hero = () => {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-4 items-center lg:items-start">
-            <Button className="btn-hero group">
+            <a 
+              href="tel:+923337783611" 
+              className="btn-hero group inline-flex items-center justify-center"
+              aria-label="Call Zeeshan at +92 333 7783611"
+            >
               <MessageCircle className="w-5 h-5 mr-2" />
               Book a free 15-min call
               <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button className="btn-secondary group">
-              <ExternalLink className="w-5 h-5 mr-2" />
-              View sample projects
-            </Button>
+            </a>
+            <div className="flex gap-2">
+              <a 
+                href="https://zk-niazi.github.io/Portfolioo-/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn-secondary group inline-flex items-center justify-center"
+                aria-label="View Zeeshan's portfolio projects"
+              >
+                <ExternalLink className="w-5 h-5 mr-2" />
+                View sample projects
+              </a>
+              <a 
+                href="https://wa.me/923337783611" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg font-medium inline-flex items-center gap-2 transition-colors"
+                aria-label="Chat on WhatsApp with +92 333 7783611"
+              >
+                <MessageCircle className="w-5 h-5" />
+                WhatsApp
+              </a>
+            </div>
           </div>
 
           {/* Availability info */}
@@ -79,7 +101,7 @@ export const Hero = () => {
           
           {/* Floating cards */}
           <div className="absolute -top-6 -left-6 bg-card/80 backdrop-blur-sm rounded-2xl p-4 border border-border/30 animate-float">
-            <div className="text-2xl font-bold gradient-text">5+</div>
+            <div className="text-2xl font-bold gradient-text">50</div>
             <div className="text-sm text-muted-foreground">Apps Delivered</div>
           </div>
           

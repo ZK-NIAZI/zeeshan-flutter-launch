@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card } from "@/components/ui/card";
-import { Mail, Phone, Github, Linkedin, Send } from "lucide-react";
+import { Mail, Phone, Github, Linkedin, Send, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export const Contact = () => {
@@ -17,19 +17,31 @@ export const Contact = () => {
     organization: "",
     project: "",
     startDate: "",
-    budget: ""
+    budget: "",
+    phone: ""
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // Create mailto link with form data
+    const subject = encodeURIComponent('New booking request — Portfolio site');
+    const body = encodeURIComponent(`Name: ${formData.name}
+Email: ${formData.email}
+University/Company: ${formData.organization}
+Project summary:
+${formData.project}
+
+Preferred start date: ${formData.startDate}
+Budget: ${formData.budget}
+Phone: ${formData.phone}`);
+    
+    window.location.href = `mailto:shaniniazi568@gmail.com?subject=${subject}&body=${body}`;
     
     toast({
-      title: "Message sent successfully!",
-      description: "I'll get back to you within 24 hours to schedule our free consultation call."
+      title: "Email client opened!",
+      description: "Please send the email from your client. I'll get back to you within 24 hours."
     });
     
     setFormData({
@@ -38,7 +50,8 @@ export const Contact = () => {
       organization: "",
       project: "",
       startDate: "",
-      budget: ""
+      budget: "",
+      phone: ""
     });
     
     setIsSubmitting(false);
@@ -121,21 +134,33 @@ export const Contact = () => {
                     className="bg-background/50"
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="budget">Budget Range</Label>
-                  <Select value={formData.budget} onValueChange={(value) => setFormData({...formData, budget: value})}>
-                    <SelectTrigger className="bg-background/50">
-                      <SelectValue placeholder="Select budget range" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="under-10k">Under PKR 10,000</SelectItem>
-                      <SelectItem value="10k-25k">PKR 10,000 - 25,000</SelectItem>
-                      <SelectItem value="25k-50k">PKR 25,000 - 50,000</SelectItem>
-                      <SelectItem value="50k-100k">PKR 50,000 - 100,000</SelectItem>
-                      <SelectItem value="100k-plus">PKR 100,000+</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div className="space-y-2">
+                <Label htmlFor="budget">Budget Range</Label>
+                <Select value={formData.budget} onValueChange={(value) => setFormData({...formData, budget: value})}>
+                  <SelectTrigger className="bg-background/50">
+                    <SelectValue placeholder="Select budget range" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="under-10k">Under PKR 10,000</SelectItem>
+                    <SelectItem value="10k-25k">PKR 10,000 - 25,000</SelectItem>
+                    <SelectItem value="25k-50k">PKR 25,000 - 50,000</SelectItem>
+                    <SelectItem value="50k-100k">PKR 50,000 - 100,000</SelectItem>
+                    <SelectItem value="100k-plus">PKR 100,000+</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="phone">Phone (optional)</Label>
+              <Input
+                id="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                className="bg-background/50"
+                placeholder="+92 333 7783611"
+              />
               </div>
 
               <Button type="submit" className="btn-hero w-full" disabled={isSubmitting}>
@@ -180,16 +205,48 @@ export const Contact = () => {
               </div>
             </div>
 
-            <div className="pt-8">
+            <div className="space-y-4">
+              <a 
+                href="https://wa.me/923337783611" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 bg-card/50 rounded-lg hover:bg-card/70 transition-colors"
+                aria-label="Chat on WhatsApp with +92 333 7783611"
+              >
+                <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
+                  <MessageCircle className="w-5 h-5 text-green-500" />
+                </div>
+                <div>
+                  <div className="font-medium">WhatsApp</div>
+                  <div className="text-muted-foreground text-sm">Quick chat support</div>
+                </div>
+              </a>
+            </div>
+
+            <div className="pt-4">
               <div className="flex gap-4">
-                <Button size="lg" className="btn-ghost">
-                  <Linkedin className="w-5 h-5 mr-2" />
-                  LinkedIn
-                </Button>
-                <Button size="lg" className="btn-ghost">
-                  <Github className="w-5 h-5 mr-2" />
-                  GitHub
-                </Button>
+                <a 
+                  href="https://www.linkedin.com/in/zeeshan-niazi-app-developer/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Open Zeeshan's LinkedIn"
+                >
+                  <Button size="lg" className="btn-ghost">
+                    <Linkedin className="w-5 h-5 mr-2" />
+                    LinkedIn
+                  </Button>
+                </a>
+                <a 
+                  href="https://github.com/ZK-NIAZI" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Open Zeeshan's GitHub"
+                >
+                  <Button size="lg" className="btn-ghost">
+                    <Github className="w-5 h-5 mr-2" />
+                    GitHub
+                  </Button>
+                </a>
               </div>
             </div>
 

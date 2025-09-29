@@ -20,22 +20,50 @@ export const Footer = () => {
           {/* Links and actions */}
           <div className="space-y-6">
             <div className="flex flex-wrap gap-3">
-              <Button variant="outline" size="sm" className="bg-transparent">
-                <ExternalLink className="w-4 h-4 mr-2" />
-                Portfolio
-              </Button>
-              <Button variant="outline" size="sm" className="bg-transparent">
-                <Github className="w-4 h-4 mr-2" />
-                GitHub
-              </Button>
-              <Button variant="outline" size="sm" className="bg-transparent">
-                <Linkedin className="w-4 h-4 mr-2" />
-                LinkedIn
-              </Button>
-              <Button variant="outline" size="sm" className="bg-transparent">
-                <FileText className="w-4 h-4 mr-2" />
-                Resume (PDF)
-              </Button>
+              <a 
+                href="https://zk-niazi.github.io/Portfolioo-/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Open Zeeshan's portfolio"
+              >
+                <Button variant="outline" size="sm" className="bg-transparent">
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Portfolio
+                </Button>
+              </a>
+              <a 
+                href="https://github.com/ZK-NIAZI" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Open Zeeshan's GitHub"
+              >
+                <Button variant="outline" size="sm" className="bg-transparent">
+                  <Github className="w-4 h-4 mr-2" />
+                  GitHub
+                </Button>
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/zeeshan-niazi-app-developer/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Open Zeeshan's LinkedIn"
+              >
+                <Button variant="outline" size="sm" className="bg-transparent">
+                  <Linkedin className="w-4 h-4 mr-2" />
+                  LinkedIn
+                </Button>
+              </a>
+              <a 
+                href="https://drive.google.com/file/d/16EbwIONhopJUC9WdyUaMPa17FWLlny0L/view?usp=sharing" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                aria-label="Download Zeeshan's Resume"
+              >
+                <Button variant="outline" size="sm" className="bg-transparent">
+                  <FileText className="w-4 h-4 mr-2" />
+                  Resume (PDF)
+                </Button>
+              </a>
             </div>
           </div>
         </div>
